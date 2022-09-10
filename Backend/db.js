@@ -1,9 +1,12 @@
 const mongoose = require("mongoose");
-const mongoURI = "mongodb://localhost:27017/";
+const mongoURI = "mongodb://0.0.0.0:27017/";
 
 const connectToMango = () => {
-	mongoose.connect(mongoURI, () => {
-		console.log("connected to mongodb");
-	});
+	mongoose
+		.connect(mongoURI, { dbName: "notebook_app", useNewUrlParser: true })
+		.then(() => {
+			console.log("Connected to mongodb");
+		})
+		.catch((err) => console.log(err.message));
 };
 module.exports = connectToMango;
