@@ -1,7 +1,8 @@
+import Navbar from "./components/Navbar";
 const App = () => {
 	return (
 		<>
-			<div>HelloWorld</div>
+			<Navbar />
 		</>
 	);
 };
