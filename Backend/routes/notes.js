@@ -71,7 +71,7 @@ router.put("/updatenote/:id", fetchuser, async (req, res) => {
 		if (!note) {
 			return res.status(404).send("Not found.");
 		}
-		if (!note.user.toString() !== req.user.id) {
+		if (note.user.toString() !== req.user.id) {
 			return res.status(401).send("Not Allowed.");
 		}
 
@@ -80,7 +80,26 @@ router.put("/updatenote/:id", fetchuser, async (req, res) => {
 			{ $set: newNote },
 			{ new: true }
 		);
-		res.json(note);
+		res.json({ note });
+	} catch (error) {
+		console.error(error.message);
+		res.status(500).send("Server Erorr occured.");
+	}
+});
+// Route 4: delete an existing notes: delete (/api/notes/deletenote)
+router.delete("/deletenote/:id", fetchuser, async (req, res) => {
+	try {
+		let note = await Notes.findById(req.params.id);
+
+		if (!note) {
+			return res.status(404).send("Not found.");
+		}
+		if (note.user.toString() !== req.user.id) {
+			return res.status(401).send("Not Allowed.");
+		}
+
+		note = await Notes.findByIdAndDelete(req.params.id);
+		res.json({ success: "Note was deleted", note: note });
 	} catch (error) {
 		console.error(error.message);
 		res.status(500).send("Server Erorr occured.");
