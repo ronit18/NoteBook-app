@@ -1,4 +1,5 @@
 import React from "react";
+import Notes from "./Notes";
 
 const Home = (props) => {
 	return (
@@ -49,7 +50,7 @@ const Home = (props) => {
 						</button>
 					</form>
 				</div>
-				<h1>Your Notes</h1>
+				<Notes />
 			</div>
 		</>
 	);
