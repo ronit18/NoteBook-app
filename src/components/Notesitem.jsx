@@ -17,7 +17,7 @@ const Noteitem = (props) => {
 						mode === "light" ? "dark" : "light"
 					} bg-${mode === "light" ? "light" : "secondary"}`}
 				>
-					<h5 className={`card-title `}>{note.title}</h5>
+					<h5 className="card-title">{note.title}</h5>
 					<p className="card-text">{note.description}</p>
 					<MdDeleteForever
 						className="mx-2"
