@@ -22,10 +22,22 @@ const NoteState = (props) => {
 			__v: 0,
 		},
 	];
+	const [mode, setMode] = useState("light");
+	const toggleMode = () => {
+		if (mode === "light") {
+			setMode("dark");
+			document.body.style.backgroundColor = "black";
+		} else {
+			setMode("light");
+			document.body.style.backgroundColor = "white";
+		}
+	};
 	const [notes, setNotes] = useState(notesInitial);
 
 	return (
-		<NoteContext.Provider value={{ notes, setNotes }}>
+		<NoteContext.Provider
+			value={{ notes, setNotes, toggleMode, mode, setMode }}
+		>
 			{props.children}
 		</NoteContext.Provider>
 	);

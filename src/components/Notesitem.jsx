@@ -1,15 +1,24 @@
 import React from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
+import { useContext } from "react";
+import noteContext from "../context/notes/noteContext";
 
 const Noteitem = (props) => {
 	const { note } = props;
+	const context = useContext(noteContext);
+	const { mode } = context;
+
 	return (
 		<div className="col-md-3">
-			<div class="card my-3">
-				<div class="card-body">
-					<h5 class="card-title">{note.title}</h5>
-					<p class="card-text">{note.description}</p>
+			<div className="card my-3">
+				<div
+					className={`card-body text-${
+						mode === "light" ? "dark" : "light"
+					} bg-${mode === "light" ? "light" : "secondary"}`}
+				>
+					<h5 className={`card-title `}>{note.title}</h5>
+					<p className="card-text">{note.description}</p>
 					<MdDeleteForever
 						className="mx-2"
 						style={{ cursor: "pointer" }}

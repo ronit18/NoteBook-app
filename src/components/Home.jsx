@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Notes from "./Notes";
+import noteContext from "../context/notes/noteContext";
 
-const Home = (props) => {
+const Home = () => {
+	const context = useContext(noteContext);
+	const { mode } = context;
 	return (
 		<>
-			<div
-				className={`text-${props.mode === "light" ? "dark" : "light"}`}
-			>
+			<div className={`text-${mode === "light" ? "dark" : "light"}`}>
 				<h1>Add a Note</h1>
 				<div className="container my-3">
 					<form>

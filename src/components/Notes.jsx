@@ -4,12 +4,12 @@ import Noteitem from "./Notesitem";
 
 const Notes = () => {
 	const context = useContext(noteContext);
-	const { notes, setNotes } = context;
+	const { notes, mode } = context;
 	return (
-		<div className="row my-3">
+		<div className={`row my-3 text-${mode === "light" ? "dark" : "light"}`}>
 			<h2>You Notes</h2>
 			{notes.map((note) => {
-				return <Noteitem note={note} />;
+				return <Noteitem key={note._id} note={note} />;
 			})}
 		</div>
 	);

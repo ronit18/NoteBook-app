@@ -1,16 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import noteContext from "../context/notes/noteContext";
 
-const Navbar = (props) => {
+const Navbar = () => {
 	let location = useLocation();
 	useEffect(() => {
 		console.log(location.pathname);
 	}, [location]);
 
+	const context = useContext(noteContext);
+	const { mode, toggleMode } = context;
 	return (
 		<>
 			<nav
-				className={`navbar navbar-expand-lg bg-${props.mode} navbar-${props.mode}`}
+				className={`navbar navbar-expand-lg bg-${mode} navbar-${mode}`}
 			>
 				<div className="container-fluid">
 					<Link className="navbar-brand" to="/">
@@ -19,11 +22,11 @@ const Navbar = (props) => {
 
 					<div
 						className={`form-check form-switch
-					text-${props.mode === "light" ? "dark" : "light"}
+					text-${mode === "light" ? "dark" : "light"}
 					`}
 					>
 						<input
-							onClick={props.toggleMode}
+							onClick={toggleMode}
 							className="form-check-input"
 							type="checkbox"
 							role="switch"
@@ -34,7 +37,7 @@ const Navbar = (props) => {
 							htmlFor="flexSwitchCheckChecked"
 						>
 							{`Enable ${
-								props.mode === "light" ? "dark" : "light"
+								mode === "light" ? "dark" : "light"
 							} Mode`}
 						</label>
 					</div>
