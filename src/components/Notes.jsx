@@ -7,7 +7,7 @@ const Notes = () => {
 	const { notes, mode } = context;
 	return (
 		<div className={`row my-3 text-${mode === "light" ? "dark" : "light"}`}>
-			<h2>You Notes</h2>
+			<h2>Your Notes</h2>
 			{notes.map((note) => {
 				return <Noteitem key={note._id} note={note} />;
 			})}
