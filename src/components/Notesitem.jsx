@@ -7,7 +7,7 @@ import noteContext from "../context/notes/noteContext";
 const Noteitem = (props) => {
 	const { note } = props;
 	const context = useContext(noteContext);
-	const { mode } = context;
+	const { mode, deleteNote } = context;
 
 	return (
 		<div className="col-md-3">
@@ -22,6 +22,9 @@ const Noteitem = (props) => {
 					<MdDeleteForever
 						className="mx-2"
 						style={{ cursor: "pointer" }}
+						onClick={() => {
+							deleteNote(note._id);
+						}}
 					/>
 					<FaEdit className="mx-2" style={{ cursor: "pointer" }} />
 				</div>
