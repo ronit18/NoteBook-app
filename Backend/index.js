@@ -4,7 +4,9 @@ const express = require("express");
 connectToMango();
 const app = express();
 const port = 5000;
+var cors = require("cors");
 
+app.use(cors());
 app.use(express.json());
 
 // Routes
